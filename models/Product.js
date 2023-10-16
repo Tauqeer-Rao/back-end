@@ -48,7 +48,7 @@ const productSchema = new mongoose.Schema({
 
 // Turning _id to id
 const virtual = productSchema.virtual("id");
-virtual.get(()=>{
+virtual.get(function() { //use normal function here, instead of arrow function
   return this._id;
 });
 productSchema.set("toJSON", {

@@ -2,7 +2,7 @@ const express = require("express");
 const router = new express.Router();
 require("../config/conn");
 // importing controllers
-const createProduct = require("../controllers/Product");
+// const createProduct = require("../controllers/Product");
 const fetchAllProducts = require("../controllers/Product");
 const fetchProductById = require("../controllers/Product");
 const updateProduct = require("../controllers/Product");
@@ -25,47 +25,55 @@ const updateOrder = require("../controllers/Order");
 const deleteOrder = require("../controllers/Order");
 const fetchAllOrders = require("../controllers/Order");
 
+//Added by me
+const getAllProducts = require("../controllers/Product");
+
 
 
 /* ==================
             Products routes
             ======================*/
-router.post("/products", createProduct);
-router.get("/products", fetchAllProducts);
-router.get("/products/:id", fetchProductById);
-router.patch("/products/:id", updateProduct);
 
- /* ==================
-             Products brands routes
-             ======================*/
+// these routes are added by me
+router.get("/", getAllProducts)
+
+
+// router.post("/products", createProduct);
+// router.get("/products", fetchAllProducts);
+// router.get("/products/:id", fetchProductById);
+// router.patch("/products/:id", updateProduct);
+
+/* ==================
+            Products brands routes
+            ======================*/
 router.post("/brands", createBrand);
 router.get("/brands", fetchBrands);
 
 
- /* ==================
-             Products category routes
-             ======================*/
+/* ==================
+            Products category routes
+            ======================*/
 router.post("/categories", createCategory);
 router.get("/categories", fetchCategories);
 
 
- /* ==================
-             User routes
-             ======================*/
+/* ==================
+            User routes
+            ======================*/
 router.get("users/:id", fetchUserById);
 router.get("/users/:id", updateUserById);
 
 
- /* ==================
-             User  auth routes
-             ======================*/
+/* ==================
+            User  auth routes
+            ======================*/
 
 router.post("/users/signup", createUser);
 router.post("/users/login", loginUser);
 
- /* ==================
-             cart routes
-             ======================*/
+/* ==================
+            cart routes
+            ======================*/
 router.post("/cart", addToCart);
 router.get("/cart", getItemsByUserId);
 router.patch("/cart/:id", updateCart);
