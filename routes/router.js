@@ -25,9 +25,10 @@ const updateOrder = require("../controllers/Order");
 const deleteOrder = require("../controllers/Order");
 const fetchAllOrders = require("../controllers/Order");
 
-//Added by me
-const getAllProducts = require("../controllers/Product");
 
+//Added by me
+//This is the way of importing multiple exports
+const { getAllProducts, createProduct} = require("../controllers/Product");
 
 
 /* ==================
@@ -35,10 +36,9 @@ const getAllProducts = require("../controllers/Product");
             ======================*/
 
 // these routes are added by me
-router.get("/", getAllProducts)
+router.get("/getAllProducts", getAllProducts)
+router.post("/create", createProduct);
 
-
-// router.post("/products", createProduct);
 // router.get("/products", fetchAllProducts);
 // router.get("/products/:id", fetchProductById);
 // router.patch("/products/:id", updateProduct);
